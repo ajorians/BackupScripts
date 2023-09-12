@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 databasepass=`cat /root/passwords/databasepass.txt`
 
@@ -9,7 +9,7 @@ DATE=`date +%F`
 FILENAME=mediawiki-$DATE.tar.gz
 SRCDIR=/srv/www/htdocs/mediawiki-1.39.3
 DESTDIR=/mnt/backups/mediawiki
-tar --gzip -cf "$DESTDIR/$FILENAME" $SRCDIR
+tar --gzip -cf "$DESTDIR/$FILENAME" -C $SRCDIR .
 
 FILENAMEDB=mediawikidb-$DATE.tar.gz
 

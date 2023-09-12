@@ -18,7 +18,7 @@ if [ ! -f "$mediawikidbbackup" ]; then
     exit 1
 fi
 
-#mysqldump -u root -p$databasepass < $mediawikidbbackup
+mysqldump -u root -p$databasepass < $mediawikidbbackup
 
-#tar -xvf $mediawikibackup -C /srv/www/htdocs
+tar -xvf $mediawikibackup -C /srv/www/htdocs
 
