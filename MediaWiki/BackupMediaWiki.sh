@@ -7,9 +7,9 @@ mkdir /mnt/backups/mediawiki
 
 DATE=`date +%F`
 FILENAME=mediawiki-$DATE.tar.gz
-SRCDIR=/srv/www/htdocs/mediawiki-1.39.3
+SRCDIR=/srv/www/htdocs
 DESTDIR=/mnt/backups/mediawiki
-tar --gzip -cf "$DESTDIR/$FILENAME" -C $SRCDIR .
+tar --gzip -cf "$DESTDIR/$FILENAME" -C $SRCDIR mediawiki-1.39.3
 
 FILENAMEDB=mediawikidb-$DATE.sql
 

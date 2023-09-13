@@ -7,9 +7,9 @@ mkdir /mnt/backups/birthdays
 
 DATE=`date +%F`
 FILENAME=birthdays-$DATE.tar.gz
-SRCDIR=/srv/www/htdocs/birthdays
+SRCDIR=/srv/www/htdocs
 DESTDIR=/mnt/backups/birthdays
-tar --gzip -cf "$DESTDIR/$FILENAME" -C $SRCDIR .
+tar --gzip -cf "$DESTDIR/$FILENAME" -C $SRCDIR birthdays
 
 FILENAMEDB=birthdaysdb-$DATE.sql
 
