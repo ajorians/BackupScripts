@@ -18,7 +18,8 @@ if [ ! -f "$birthdaydbbackup" ]; then
     exit 1
 fi
 
-mysqldump -u root -p$databasepass < $birthdaydbbackup
+mysql -u root -p$databasepass -e "create database birthdays"; 
+mysql -u root -p$databasepass < $birthdaydbbackup
 
 tar -xvf $birthdaybackup -C /srv/www/htdocs
 

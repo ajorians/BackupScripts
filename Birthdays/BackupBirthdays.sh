@@ -11,7 +11,7 @@ SRCDIR=/srv/www/htdocs/birthdays
 DESTDIR=/mnt/backups/birthdays
 tar --gzip -cf "$DESTDIR/$FILENAME" -C $SRCDIR .
 
-FILENAMEDB=birthdaysdb-$DATE.tar.gz
+FILENAMEDB=birthdaysdb-$DATE.sql
 
 mysqldump -u root -p$databasepass birthdays > "$DESTDIR/$FILENAMEDB"
 

@@ -18,7 +18,8 @@ if [ ! -f "$mediawikidbbackup" ]; then
     exit 1
 fi
 
-mysqldump -u root -p$databasepass < $mediawikidbbackup
+mysql -u root -p$databasepass -e "create database mediawiki"; 
+mysql -u root -p$databasepass < $mediawikidbbackup
 
 tar -xvf $mediawikibackup -C /srv/www/htdocs
 

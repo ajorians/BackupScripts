@@ -11,7 +11,7 @@ SRCDIR=/srv/www/htdocs/mediawiki-1.39.3
 DESTDIR=/mnt/backups/mediawiki
 tar --gzip -cf "$DESTDIR/$FILENAME" -C $SRCDIR .
 
-FILENAMEDB=mediawikidb-$DATE.tar.gz
+FILENAMEDB=mediawikidb-$DATE.sql
 
 mysqldump -u root -p$databasepass mediawiki > "$DESTDIR/$FILENAMEDB"
 
