@@ -19,7 +19,7 @@ if [ ! -f "$birthdaydbbackup" ]; then
 fi
 
 mysql -u root -p$databasepass -e "create database birthdays"; 
-mysql -u root -p$databasepass < $birthdaydbbackup
+mysql -u root -p$databasepass birthdays < $birthdaydbbackup
 
 tar -xvf $birthdaybackup -C /srv/www/htdocs
 

@@ -19,7 +19,7 @@ if [ ! -f "$mediawikidbbackup" ]; then
 fi
 
 mysql -u root -p$databasepass -e "create database mediawiki"; 
-mysql -u root -p$databasepass < $mediawikidbbackup
+mysql -u root -p$databasepass mediawiki < $mediawikidbbackup
 
 tar -xvf $mediawikibackup -C /srv/www/htdocs
 
