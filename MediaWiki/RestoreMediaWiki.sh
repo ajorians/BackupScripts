@@ -34,3 +34,5 @@ mysql -u root -p$databasepass mediawiki < $MEDIAWIKIDBBACKUP
 
 tar -xvf $MEDIAWIKIBACKUP -C /srv/www/htdocs
 
+sed -i 's/https:\/\/wiki.orians.org/http:\/\/wikibackup.orians.org/g' /srv/www/htdocs/mediawiki-*/LocalSettings.php
+
