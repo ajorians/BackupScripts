@@ -3,12 +3,12 @@
 databasepass=`cat /root/passwords/databasepass.txt`
 
 mkdir /mnt/backups
-mkdir /mnt/backups/birthdays
+mkdir /mnt/backups/sync/birthdays
 
 DATE=`date +%F`
 FILENAME=birthdays-$DATE.tar.gz
 SRCDIR=/srv/www/htdocs
-DESTDIR=/mnt/backups/birthdays
+DESTDIR=/mnt/backups/sync/birthdays
 tar --gzip -cf "$DESTDIR/$FILENAME" -C $SRCDIR birthdays
 
 FILENAMEDB=birthdaysdb-$DATE.sql

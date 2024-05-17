@@ -3,12 +3,12 @@
 databasepass=`cat /root/passwords/databasepass.txt`
 
 mkdir /mnt/backups
-mkdir /mnt/backups/mediawiki
+mkdir /mnt/backups/sync/mediawiki
 
 DATE=`date +%F`
 FILENAME=mediawiki-$DATE.tar.gz
 SRCDIR=/srv/www/htdocs
-DESTDIR=/mnt/backups/mediawiki
+DESTDIR=/mnt/backups/sync/mediawiki
 tar --gzip -cf "$DESTDIR/$FILENAME" -C $SRCDIR mediawiki-1.39.3
 
 FILENAMEDB=mediawikidb-$DATE.sql
