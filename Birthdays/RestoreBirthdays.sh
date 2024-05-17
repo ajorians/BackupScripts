@@ -1,25 +1,36 @@
 #!/bin/bash
 
-databasepass=`cat /root/passwords/databasepass.txt`
-
-echo "Enter full path to birthdays files backup:"
-read birthdaybackup
-
-echo "Enter full path to birthdays database backup:"
-read birthdaydbbackup
-
-if [ ! -f "$birthdaybackup" ]; then
-    echo "$birthdaybackup does not exist."
+if [ ! -f /root/passwords/databasepass.txt ]; then
+    echo "Database file not found!"
     exit 1
 fi
 
-if [ ! -f "$birthdaydbbackup" ]; then
-    echo "$birthdaydbbackup does not exist."
+databasepass=`cat /root/passwords/databasepass.txt`
+
+ask()
+{
+  declare -g $1="$2"
+  if [ -z "${!1}" ]; then
+    echo "$3"
+    read $1
+  fi
+}
+
+ask BIRTHDAYSBACKUP "$1" "Full path to mediawiki backup .tar.gz file:"
+ask BIRTHDAYSDBBACKUP "$2" "Full path to mediawiki database backup .sql file:"
+
+if [ ! -f "$BIRTHDAYSBACKUP" ]; then
+    echo "$BIRTHDAYSBACKUP does not exist."
+    exit 1
+fi
+
+if [ ! -f "$BIRTHDAYSDBBACKUP" ]; then
+    echo "$BIRTHDAYSDBBACKUP does not exist."
     exit 1
 fi
 
 mysql -u root -p$databasepass -e "create database birthdays"; 
-mysql -u root -p$databasepass birthdays < $birthdaydbbackup
+mysql -u root -p$databasepass birthdays < $BIRTHDAYSDBBACKUP
 
-tar -xvf $birthdaybackup -C /srv/www/htdocs
+tar -xvf $BIRTHDAYSBACKUP -C /srv/www/htdocs
 
