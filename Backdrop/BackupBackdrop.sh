@@ -16,5 +16,5 @@ FILENAMEDB=backdropdb-$DATE.sql
 mysqldump -u root -p$databasepass backdrop > "$DESTDIR/$FILENAMEDB"
 
 ## Delete older backups
-find "$DESTDIR/$FILENAME" -type f -mtime +10 -delete
-find "$DESTDIR/$FILENAMEDB" -type f -mtime +10 -delete
+find "$DESTDIR/" -name "backdropdb*.sql" -type f -mtime +10 -delete
+find "$DESTDIR/" -name "backdrop*.tar.gz" -type f -mtime +10 -delete
