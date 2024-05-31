@@ -16,5 +16,6 @@ FILENAMEDB=birthdaysdb-$DATE.sql
 mysqldump -u root -p$databasepass birthdays > "$DESTDIR/$FILENAMEDB"
 
 ## Delete older backups
-find "$DESTDIR/" -name "birthdaysdb*.sql" -type f -mtime +10 -delete
-find "$DESTDIR/" -name "birthdays*.tar.gz" -type f -mtime +10 -delete
+ls -t $DESTDIR/birthdays-*.tar.gz | tail -n +10 | xargs rm --
+ls -t $DESTDIR/birthdaysdb-*.sql | tail -n +10 | xargs rm --
+

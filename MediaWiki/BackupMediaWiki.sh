@@ -16,5 +16,5 @@ FILENAMEDB=mediawikidb-$DATE.sql
 mysqldump -u root -p$databasepass mediawiki > "$DESTDIR/$FILENAMEDB"
 
 ## Delete older backups
-find "$DESTDIR/" -name "mediawiki*.tar.gz" -type f -mtime +10 -delete
-find "$DESTDIR/" -name "mediawikidb*.sql" -type f -mtime +10 -delete
+ls -t $DESTDIR/mediawiki-*.tar.gz | tail -n +10 | xargs rm --
+ls -t $DESTDIR/mediawikidb-*.sql | tail -n +10 | xargs rm --
