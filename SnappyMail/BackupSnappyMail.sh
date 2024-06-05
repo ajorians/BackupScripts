@@ -2,13 +2,13 @@
 
 #databasepass=`cat /root/passwords/databasepass.txt`
 
-mkdir /mnt/backups
-mkdir /mnt/backups/sync/snappymail
+mkdir /mnt/sync
+mkdir /mnt/sync/backups/snappymail
 
 DATE=`date +%F`
 FILENAME=snappymail-$DATE.tar.gz
 SRCDIR=/srv/www/htdocs
-DESTDIR=/mnt/backups/sync/snappymail
+DESTDIR=/mnt/sync/backups/snappymail
 tar --gzip -cf "$DESTDIR/$FILENAME" -C $SRCDIR snappymail
 
 ## Delete older backups

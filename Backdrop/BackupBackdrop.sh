@@ -2,13 +2,13 @@
 
 databasepass=`cat /root/passwords/databasepass.txt`
 
-mkdir /mnt/backups
-mkdir /mnt/backups/sync/backdrop
+mkdir /mnt/sync/backups
+mkdir /mnt/sync/backups/backdrop
 
 DATE=`date +%F`
 FILENAME=backdrop-$DATE.tar.gz
 SRCDIR=/srv/www/htdocs
-DESTDIR=/mnt/backups/sync/backdrop
+DESTDIR=/mnt/sync/backups/backdrop
 tar --gzip -cf "$DESTDIR/$FILENAME" -C $SRCDIR backdrop
 
 FILENAMEDB=backdropdb-$DATE.sql

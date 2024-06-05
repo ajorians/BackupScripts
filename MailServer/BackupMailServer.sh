@@ -2,13 +2,13 @@
 
 #databasepass=`cat /root/passwords/databasepass.txt`
 
-mkdir /mnt/backups
-mkdir /mnt/backups/sync/mailserver
+mkdir /mnt/sync
+mkdir /mnt/sync/backups/mailserver
 
 DATE=`date +%F`
 FILENAME=mailserver-$DATE.tar.gz
 SRCDIR=/opt/DockerSwarmData
-DESTDIR=/mnt/backups/sync/mailserver
+DESTDIR=/mnt/sync/backups/mailserver
 tar --gzip -cf "$DESTDIR/$FILENAME" -C $SRCDIR mailserver
 
 ## Delete older backups
