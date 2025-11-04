@@ -16,13 +16,7 @@ ask()
   fi
 }
 
-ask MEDIAWIKIBACKUP "$1" "Full path to mediawiki backup .tar.gz file:"
-ask MEDIAWIKIDBBACKUP "$2" "Full path to mediawiki database backup .sql file:"
-
-if [ ! -f "$MEDIAWIKIBACKUP" ]; then
-    echo "$MEDIAWIKIBACKUP does not exist."
-    exit 1
-fi
+ask MEDIAWIKIDBBACKUP "$1" "Full path to mediawiki database backup .sql file:"
 
 if [ ! -f "$MEDIAWIKIDBBACKUP" ]; then
     echo "$MEDIAWIKIDBBACKUP does not exist."
@@ -32,7 +26,6 @@ fi
 mysql -u root -p$databasepass -e "create database mediawiki"; 
 mysql -u root -p$databasepass mediawiki < $MEDIAWIKIDBBACKUP
 
-tar -xvf $MEDIAWIKIBACKUP -C /srv/www/htdocs
-
-sed -i 's/https:\/\/wiki.orians.org/http:\/\/wikibackup.orians.org/g' /srv/www/htdocs/mediawiki-*/LocalSettings.php
+sed -i 's/https:\/\/wiki.orians.org/http:\/\/wikibackup.orians.org/g' /opt/DockerSwarmData/mediawiki/LocalSettings.php
+sed -i 's/database.orians.org/10.0.0.14/g' /opt/DockerSwarmData/mediawiki/LocalSettings.php
 
